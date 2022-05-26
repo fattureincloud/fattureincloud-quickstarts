@@ -1,0 +1,6 @@
+{
+    "name": "quickstart/php-sdk-quickstart",
+    "require": {
+        "fattureincloud/fattureincloud-php-sdk": "^2.0"
+    }
+}
