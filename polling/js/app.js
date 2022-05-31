@@ -39,7 +39,7 @@ async function main() {
     // Here we define the parameters for the first request.
     let opts = {
         'fields': null,
-        'fieldset': "detailed",
+        'fieldset': 'detailed',
         'sort': null,
         'page': 1, // We're trying to obtain the first page
         'perPage': 5 // Every page will contain at most 5 products
@@ -50,21 +50,21 @@ async function main() {
         // We perform the first request
         let result = await listProductsWithBackoff(companyId, opts)
         // We recover the last page index
-        let lastPage = result["last_page"]
+        let lastPage = result['last_page']
         // We write the products of this page to the file
         // "data" contains an array of products 
-        await appendProductsToFile(result["data"])
+        await appendProductsToFile(result['data'])
       
         // For all the remaining pages (we already have the first one)
         for (var i = 2; i <= lastPage; i++) {
             // We update the page index
-            opts["page"] = i
+            opts['page'] = i
             // We require the page at the selected index
             result = await listProductsWithBackoff(companyId, opts)
             // And we write the products to the file
-            await appendProductsToFile(result["data"])
+            await appendProductsToFile(result['data'])
         }
-        console.log("products succesfully retrieved and saved in ./products.jsonl")
+        console.log('products succesfully retrieved and saved in ./products.jsonl')
     } catch (e) {
         console.log(e)
     }
@@ -78,7 +78,7 @@ async function appendProductsToFile(products) {
     for (i in products) {
         let product = products[i]
         // We obtain the related JSON and append it to the file as single line
-        fs.appendFileSync(fileName, JSON.stringify(product) + "\n", err => {
+        fs.appendFileSync(fileName, JSON.stringify(product) + '\n', err => {
             if (err) {
                 console.error(err)
                 return
@@ -95,7 +95,7 @@ async function listProductsWithBackoff(companyId, opts) {
     const getProd = async (retryCount = 0, lastError = null) => {
         if (retryCount > 20) throw new Error(lastError)
         try {
-            console.log("attempt:", count++, "wait:", 2 ** retryCount * 1000)
+            console.log('page:', opts['page'], 'attempt:', count++, 'wait:', 2 ** retryCount * 1000)
             // The actual SDK method is executed here
             return await productsApiInstance.listProducts(companyId, opts)
         } catch (e) {
@@ -113,5 +113,5 @@ async function listProductsWithBackoff(companyId, opts) {
 
 // This is just a mock: this function should contain the code to retrieve the Access Token
 function getToken() {
-  return "YOUR_ACCESS_TOKEN"
+  return 'YOUR_ACCESS_TOKEN'
 }
