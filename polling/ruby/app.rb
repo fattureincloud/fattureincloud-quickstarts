@@ -68,7 +68,7 @@ def append_products_to_file(products)
 end
 
 def get_token()
-  return "a/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZWYiOiJBbTBBOUlweUpWN05IYlJwS3RQbmhWWG9nMGV5dEhmdyIsImV4cCI6MTY1NDE1MzQ5MH0.rWX_ELqVhQEHV9VDhZ6DFo_-IRK9TJzntPRwNwT3MOo"
+  return "YOUR_ACCESS_TOKEN"
 end
 
 # This code should be executed periodically using a cron library or job scheduler.

@@ -1,20 +1,19 @@
 // The following dependency is required
-// yarn add @fattureincloud/fattureincloud-js-sdk
-
-const fs = require('fs')
-const fattureInCloudSdk = require('@fattureincloud/fattureincloud-js-sdk')
+// yarn add @fattureincloud/fattureincloud-ts-sdk
+import fs from 'fs'
+import { Configuration, ProductsApi, Product } from '@fattureincloud/fattureincloud-ts-sdk'
 
 // Here we init the Fatture in Cloud SDK
 // The Access Token is retrieved using the "getToken" method
-var defaultClient = fattureInCloudSdk.ApiClient.instance
-var OAuth2AuthenticationCodeFlow = defaultClient.authentications['OAuth2AuthenticationCodeFlow']
-OAuth2AuthenticationCodeFlow.accessToken = getToken()
+const apiConfig = new Configuration({
+    accessToken: getToken()
+});
 
 // In this example we're using the Products API
-var productsApiInstance = new fattureInCloudSdk.ProductsApi()
+var productsApiInstance = new ProductsApi(apiConfig);
 
 // File where the products will be saved
-var fileName = 'products.jsonl'
+var fileName = './products.jsonl'
 
 // This code should be executed periodically using a cron library or job scheduler.
 // For example: https://www.npmjs.com/package/node-cron
@@ -34,38 +33,33 @@ async function main() {
             }
         })
     } else {
-        fs.writeFileSync(fileName);
+        fs.writeFileSync(fileName, "");
     }
   
     // Here we define the parameters for the first request.
-    let opts = {
-        'fields': null,
-        'fieldset': 'detailed',
-        'sort': null,
-        'page': 1, // We're trying to obtain the first page
-        'perPage': 5 // Every page will contain at most 5 products
-    }
+    let page = 1
+
     let companyId = 2 // This is the ID of the company we're working on
     
     try {
         // We perform the first request
-        let result = await listProductsWithBackoff(companyId, opts)
+        let result = await listProductsWithBackoff(companyId, page)
         // We recover the last page index
-        let lastPage = result['last_page']
+        let lastPage = result["last_page"]
         // We write the products of this page to the file
         // "data" contains an array of products 
-        await appendProductsToFile(result['data'])
-      
+        await appendProductsToFile(result.data)
+        
         // For all the remaining pages (we already have the first one)
         for (var i = 2; i <= lastPage; i++) {
             // We update the page index
-            opts['page'] = i
+            page = i
             // We require the page at the selected index
-            result = await listProductsWithBackoff(companyId, opts)
+            result = await listProductsWithBackoff(companyId, page)
             // And we write the products to the file
-            await appendProductsToFile(result['data'])
+            await appendProductsToFile(result.data)
         }
-        console.log('products succesfully retrieved and saved in ./products.jsonl')
+        console.log("products succesfully retrieved and saved in ./products.jsonl")
     } catch (e) {
         console.log(e)
     }
@@ -74,34 +68,30 @@ async function main() {
 // In this function we append the products in the JSON Lines file.
 // You can replace this function to perform the operations you need.
 // For example, you can build SQL queries or call a third-party API using the retrieved products.
-async function appendProductsToFile(products) {
+async function appendProductsToFile(products: Array<Product>) {
     // For each product in the array
-    for (i in products) {
+    for (var i in products) {
         let product = products[i]
         // We obtain the related JSON and append it to the file as single line
-        fs.appendFileSync(fileName, JSON.stringify(product) + '\n', err => {
-            if (err) {
-                console.error(err)
-                return
-            }
-        })
+        fs.appendFileSync('./products.jsonl', JSON.stringify(product) + "\n")
     }
 }
 
 // Here we wrap the SDK method with an exponential backoff
 // This is to manage the quota exceeded issue
-async function listProductsWithBackoff(companyId, opts) {
+async function listProductsWithBackoff(companyId: number, page: number) {
     var count = 0
-    const delay = retryCount => new Promise(resolve => setTimeout(resolve, 2 ** retryCount * 1000))
-    const getProd = async (retryCount = 0, lastError = null) => {
+    var perPage = 5
+    const delay = (retryCount: number) => new Promise(resolve => setTimeout(resolve, 2 ** retryCount * 1000))
+    const getProd: any = async (retryCount = 0, lastError?: string) => {
         if (retryCount > 20) throw new Error(lastError)
         try {
-            console.log('Page:', opts['page'], 'Attempt:', count++, 'WaitTime(millis):', 2 ** retryCount * 1000)
+            console.log('Page:', page, 'Attempt:', count++, 'WaitTime(millis):', 2 ** retryCount * 1000)
             // The actual SDK method is executed here
-            return await productsApiInstance.listProducts(companyId, opts)
-        } catch (e) {
+            return await (await productsApiInstance.listProducts(companyId, undefined, "detailed", undefined, page, perPage)).data
+        } catch (e: any) {
             await delay(retryCount)
-            return getProd(retryCount + 1, e)
+            return getProd(++retryCount, e.message)
         }
     }
     try {
@@ -114,5 +104,5 @@ async function listProductsWithBackoff(companyId, opts) {
 
 // This is just a mock: this function should contain the code to retrieve the Access Token
 function getToken() {
-  return 'YOUR_ACCESS_TOKEN'
+  return "YOUR_ACCESS_TOKEN"
 }
