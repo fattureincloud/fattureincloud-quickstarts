@@ -81,7 +81,7 @@ async function appendProductsToFile(products: Array<Product>) {
 // This is to manage the quota exceeded issue
 async function listProductsWithBackoff(companyId: number, page: number) {
     var count = 0
-    var perPage = 5
+    var perPage = 50 // Every page will contain at most 50 products
     const delay = (retryCount: number) => new Promise(resolve => setTimeout(resolve, 2 ** retryCount * 1000))
     const getProd: any = async (retryCount = 0, lastError?: string) => {
         if (retryCount > 20) throw new Error(lastError)

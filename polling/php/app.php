@@ -60,13 +60,14 @@ function appendProductsToFile($products)
 function listProductsWithBackoff($productsApiInstance, $companyId, $currentPage): Object
 {
     $attempt = 0;
+    $perPage = 50; // Every page will contain at most 50 products
     $backoff = new Backoff(20, 'exponential', 300000, true);
-    return $backoff->run(function () use ($productsApiInstance, $companyId, $currentPage, &$attempt) {
+    return $backoff->run(function () use ($productsApiInstance, $companyId, $currentPage, $perPage, &$attempt) {
         $waitTime = 2 ** $attempt * 1000;
         echo sprintf("Page: %s Attempt: %s WaitTime(millis): %s\n", $currentPage, $attempt++, $waitTime);
 
         // The actual SDK method is executed here
-        $result = $productsApiInstance->listProducts($companyId, null, "detailed", null, $currentPage, 5);
+        $result = $productsApiInstance->listProducts($companyId, null, "detailed", null, $currentPage, $perPage);
 
         return $result;
     });

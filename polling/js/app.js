@@ -43,7 +43,7 @@ async function main() {
         'fieldset': 'detailed',
         'sort': null,
         'page': 1, // We're trying to obtain the first page
-        'perPage': 5 // Every page will contain at most 5 products
+        'perPage': 50 // Every page will contain at most 50 products
     }
     let companyId = 2 // This is the ID of the company we're working on
     

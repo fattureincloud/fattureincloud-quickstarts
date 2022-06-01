@@ -22,7 +22,7 @@ def main()
         fieldset: "detailed",
         sort: nil,
         page: 1, # We're trying to obtain the first page
-        per_page: 5 # Every page will contain at most 5 products
+        per_page: 50 # Every page will contain at most 50 products
     }
     actual_page = 2
     
