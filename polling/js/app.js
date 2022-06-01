@@ -95,7 +95,7 @@ async function listProductsWithBackoff(companyId, opts) {
     const getProd = async (retryCount = 0, lastError = null) => {
         if (retryCount > 20) throw new Error(lastError)
         try {
-            console.log('page:', opts['page'], 'attempt:', count++, 'wait:', 2 ** retryCount * 1000)
+            console.log('Page:', opts['page'], 'Attempt:', count++, 'WaitTime(millis):', 2 ** retryCount * 1000)
             // The actual SDK method is executed here
             return await productsApiInstance.listProducts(companyId, opts)
         } catch (e) {

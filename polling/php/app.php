@@ -60,7 +60,7 @@ function appendProductsToFile($products)
 function listProductsWithBackoff($productsApiInstance, $companyId, $currentPage): Object
 {
     $attempt = 0;
-    $backoff = new Backoff(100, 'exponential', 300000, true);
+    $backoff = new Backoff(20, 'exponential', 300000, true);
     return $backoff->run(function () use ($productsApiInstance, $companyId, $currentPage, &$attempt) {
         $waitTime = 2 ** $attempt * 1000;
         echo sprintf("Page: %s Attempt: %s WaitTime(millis): %s\n", $currentPage, $attempt++, $waitTime);
