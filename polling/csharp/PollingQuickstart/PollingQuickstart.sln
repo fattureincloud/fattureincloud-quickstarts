@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollingQuickstart", "PollingQuickstart\PollingQuickstart.csproj", "{D4C5B7FE-8649-41CB-AB6B-BA64A7A3C92E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4C5B7FE-8649-41CB-AB6B-BA64A7A3C92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C5B7FE-8649-41CB-AB6B-BA64A7A3C92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C5B7FE-8649-41CB-AB6B-BA64A7A3C92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C5B7FE-8649-41CB-AB6B-BA64A7A3C92E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E24C69ED-C208-452F-9979-EAC3179CC75A}
+	EndGlobalSection
+EndGlobal

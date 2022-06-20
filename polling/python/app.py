@@ -43,7 +43,7 @@ def sync_products():
     # The ID of the controlled company.
     company_id = 2
     current_page = 1
-    per_page = 5
+    per_page = 50
 
     with fattureincloud_python_sdk.ApiClient(configuration) as api_client:
         # In this example we're using the Products API
