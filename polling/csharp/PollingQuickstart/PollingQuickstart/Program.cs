@@ -3,7 +3,11 @@
 // dotnet add package Polly
 // dotnet add package Polly.Contrib.WaitAndRetry
 
+using System;
+using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using Polly;
 using It.FattureInCloud.Sdk.Api;
 using It.FattureInCloud.Sdk.Model;

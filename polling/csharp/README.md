@@ -1,15 +1,15 @@
 # Run the quickstart
 
-Before running the script make sure to edit the *get_token* method to retrieve your access token.
+Before running the script make sure to edit the _GetToken_ method to retrieve your access token.
 
 Install the dependencies:
 ```
-pip3 install -r requirements.txt 
+dotnet restore
 ```
 
 Start the server:
 ```
-python3 index.py
+dotnet run
 ```
 
 Now you should see the new _products.jsonl_ file containing all your products!
