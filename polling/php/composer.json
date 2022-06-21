@@ -1,0 +1,12 @@
+{
+    "name": "fattureincloud/synchronization-using-polling",
+    "autoload": {
+        "psr-4": {
+            "Fattureincloud\\SynchronizationUsingPolling\\": "src/"
+        }
+    },
+    "require": {
+        "stechstudio/backoff": "^1.2",
+        "fattureincloud/fattureincloud-php-sdk": "^2.0"
+    }
+}
