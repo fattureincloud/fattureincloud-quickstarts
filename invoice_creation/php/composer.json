@@ -1,0 +1,11 @@
+{
+    "name": "fattureincloud/invoice-creation",
+    "autoload": {
+        "psr-4": {
+            "Fattureincloud\\InvoiceCreation\\": "src/"
+        }
+    },
+    "require": {
+        "fattureincloud/fattureincloud-php-sdk": "^2.0"
+    }
+}
