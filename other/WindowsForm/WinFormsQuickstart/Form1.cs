@@ -44,7 +44,7 @@ namespace WinFormsQuickstart
 
         private void retrieveAllClients(int page = 1)
         {
-            var result = clientsApi.ListClientsWithHttpInfo(companyId, page: page, perPage: 5);
+            var result = clientsApi.ListClientsWithHttpInfo(companyId, page: page);
 
             result.Data.Data.ForEach(client =>
             {
