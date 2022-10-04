@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 
-	oauth "github.com/fattureincloud/fattureincloud-go-sdk/oauth2"
+	oauth "github.com/fattureincloud/fattureincloud-go-sdk/v2/oauth2"
 )
 
 func getOAuthAccessToken(w http.ResponseWriter, r *http.Request) {

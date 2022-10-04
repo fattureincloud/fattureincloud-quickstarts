@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"os"
 
-	fattureincloudapi "github.com/fattureincloud/fattureincloud-go-sdk/api"
-	oauth "github.com/fattureincloud/fattureincloud-go-sdk/oauth2"
+	fattureincloudapi "github.com/fattureincloud/fattureincloud-go-sdk/v2/api"
+	oauth "github.com/fattureincloud/fattureincloud-go-sdk/v2/oauth2"
 )
 
 func getFirstCompanySuppliers(w http.ResponseWriter, r *http.Request) {

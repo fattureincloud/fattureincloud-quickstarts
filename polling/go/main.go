@@ -1,5 +1,5 @@
 // The following dependencies is required
-// go get github.com/fattureincloud/fattureincloud-go-sdk/
+// go get github.com/fattureincloud/fattureincloud-go-sdk/v2
 // go get github.com/cenkalti/backoff/v4
 
 package main
@@ -11,8 +11,8 @@ import (
 	"os"
 
 	backoff "github.com/cenkalti/backoff/v4"
-	fattureincloudapi "github.com/fattureincloud/fattureincloud-go-sdk/api"
-	fattureincloud "github.com/fattureincloud/fattureincloud-go-sdk/model"
+	fattureincloudapi "github.com/fattureincloud/fattureincloud-go-sdk/v2/api"
+	fattureincloud "github.com/fattureincloud/fattureincloud-go-sdk/v2/model"
 )
 
 var (

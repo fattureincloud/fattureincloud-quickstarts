@@ -2,7 +2,7 @@ module example.com/m/v2
 
 go 1.18
 
-require github.com/fattureincloud/fattureincloud-go-sdk v0.0.0-20220912140231-ee46794412d4
+require github.com/fattureincloud/fattureincloud-go-sdk/v2 v2.0.1
 
 require (
 	github.com/golang/protobuf v1.4.2 // indirect
