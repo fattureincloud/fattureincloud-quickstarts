@@ -1,1 +1,1 @@
-fattureincloud_python_sdk>=2.0.7
+fattureincloud_python_sdk>=2.0.10

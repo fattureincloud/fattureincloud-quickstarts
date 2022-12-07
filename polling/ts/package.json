@@ -12,6 +12,6 @@
       "@types/node": "^17.0.34"
     },
     "dependencies": {
-      "@fattureincloud/fattureincloud-ts-sdk": "^2.0.2"
+      "@fattureincloud/fattureincloud-ts-sdk": "^2.0.6"
     }
   }

@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fattureincloud/fattureincloud-js-sdk": "^2.0.14"
+    "@fattureincloud/fattureincloud-js-sdk": "^2.0.17"
   }
 }

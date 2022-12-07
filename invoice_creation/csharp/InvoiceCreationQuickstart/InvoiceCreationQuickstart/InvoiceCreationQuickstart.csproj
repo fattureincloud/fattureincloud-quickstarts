@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="It.FattureInCloud.Sdk" Version="2.0.10" />
+    <PackageReference Include="It.FattureInCloud.Sdk" Version="2.0.16" />
   </ItemGroup>
 
 </Project>
