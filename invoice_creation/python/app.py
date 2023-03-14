@@ -1,27 +1,26 @@
 import datetime
 import fattureincloud_python_sdk
 from fattureincloud_python_sdk.api import issued_documents_api
-from fattureincloud_python_sdk.model.vat_type import VatType
-from fattureincloud_python_sdk.model.currency import Currency
-from fattureincloud_python_sdk.model.language import Language
-from fattureincloud_python_sdk.model.entity import Entity
-from fattureincloud_python_sdk.model.payment_method import PaymentMethod
-from fattureincloud_python_sdk.model.payment_account import PaymentAccount
-from fattureincloud_python_sdk.model.document_template import DocumentTemplate
-from fattureincloud_python_sdk.model.issued_document import IssuedDocument
-from fattureincloud_python_sdk.model.issued_document_type import IssuedDocumentType
-from fattureincloud_python_sdk.model.issued_document_status import IssuedDocumentStatus
-from fattureincloud_python_sdk.model.create_issued_document_request import CreateIssuedDocumentRequest
-from fattureincloud_python_sdk.model.create_issued_document_response import CreateIssuedDocumentResponse
-from fattureincloud_python_sdk.model.issued_document_items_list_item import IssuedDocumentItemsListItem
-from fattureincloud_python_sdk.model.issued_document_payments_list_item import IssuedDocumentPaymentsListItem
+from fattureincloud_python_sdk.models.vat_type import VatType
+from fattureincloud_python_sdk.models.currency import Currency
+from fattureincloud_python_sdk.models.language import Language
+from fattureincloud_python_sdk.models.entity import Entity
+from fattureincloud_python_sdk.models.payment_method import PaymentMethod
+from fattureincloud_python_sdk.models.payment_account import PaymentAccount
+from fattureincloud_python_sdk.models.document_template import DocumentTemplate
+from fattureincloud_python_sdk.models.issued_document import IssuedDocument
+from fattureincloud_python_sdk.models.issued_document_type import IssuedDocumentType
+from fattureincloud_python_sdk.models.issued_document_status import IssuedDocumentStatus
+from fattureincloud_python_sdk.models.create_issued_document_request import CreateIssuedDocumentRequest
+from fattureincloud_python_sdk.models.create_issued_document_response import CreateIssuedDocumentResponse
+from fattureincloud_python_sdk.models.issued_document_items_list_item import IssuedDocumentItemsListItem
+from fattureincloud_python_sdk.models.issued_document_payments_list_item import IssuedDocumentPaymentsListItem
 
 from pprint import pprint
 
 # set your access token
-configuration = fattureincloud_python_sdk.Configuration(
-    access_token = "YOUR_ACCESS_TOKEN"
-)
+configuration = fattureincloud_python_sdk.Configuration()
+configuration.access_token = "YOUR_ACCESS_TOKEN"
 
 # set your company id
 company_id = 12345

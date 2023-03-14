@@ -11,9 +11,8 @@ class Quickstart:
         token_file = open("./token.json")
         json_file = json.load(token_file)
         token_file.close()
-        configuration = fattureincloud_python_sdk.Configuration(
-            access_token = json_file["access_token"]
-        )
+        configuration = fattureincloud_python_sdk.Configuration()
+        configuration.access_token = json_file["access_token"]
         with fattureincloud_python_sdk.ApiClient(configuration) as api_client:
             
             # Retrieve the first company id

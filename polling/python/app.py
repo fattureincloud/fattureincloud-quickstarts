@@ -36,9 +36,8 @@ def get_token():
 def sync_products():
     # Here we init the Fatture in Cloud SDK
     # The Access Token is retrieved using the "GetToken" method
-    configuration = fattureincloud_python_sdk.Configuration(
-        access_token = get_token()
-    )
+    configuration = fattureincloud_python_sdk.Configuration()
+    configuration.access_token = get_token()
     configuration.retries = 0 # Needed to implement custom backoff
     # The ID of the controlled company.
     company_id = 2
