@@ -24,7 +24,7 @@ products = []
 curr_page = 1
 last_page = 1
 while True:
-  url = f"https://api-v2.fattureincloud.it/c/{company_id}/products?fieldset=detailed&page={curr_page}&per_page=5"
+  url = f"https://api-v2.fattureincloud.it/c/{company_id}/products?fieldset=detailed&page={curr_page}&per_page=100"
   response = requests.request("GET", url, headers=headers, data=payload)
   m = response.json()
   items = m['data']
