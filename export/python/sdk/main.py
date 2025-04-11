@@ -52,8 +52,6 @@ with fattureincloud_python_sdk.ApiClient(configuration) as api_client:
   except Exception as e:
       print("Exception when calling ProductsApi->list_products: %s\n" % e)
 
-
-
 print(json.dumps(products, indent=4))
 
 # Here we write the products to an excel file
