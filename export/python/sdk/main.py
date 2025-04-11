@@ -14,9 +14,8 @@ configuration = fattureincloud_python_sdk.Configuration(
 )
 
 with fattureincloud_python_sdk.ApiClient(configuration) as api_client:
-  user_api = fattureincloud_python_sdk.UserApi(api_client)
-
   # # Uncomment the following lines to get the company_id from the api
+  # user_api = fattureincloud_python_sdk.UserApi(api_client)
   # try:
   #   # List User Companies
   #   api_response = user_api.list_user_companies()
