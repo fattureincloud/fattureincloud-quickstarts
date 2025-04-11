@@ -13,7 +13,6 @@ configuration = fattureincloud_python_sdk.Configuration(
   access_token = token
 )
 
-# Enter a context with an instance of the API client
 with fattureincloud_python_sdk.ApiClient(configuration) as api_client:
   user_api = fattureincloud_python_sdk.UserApi(api_client)
 
@@ -26,7 +25,6 @@ with fattureincloud_python_sdk.ApiClient(configuration) as api_client:
   # except Exception as e:
   #   print("Exception when calling UserApi->list_user_companies: %s\n" % e)
 
-  # Create an instance of the API class
   products_api = fattureincloud_python_sdk.ProductsApi(api_client)
   
   per_page = 100
@@ -59,14 +57,13 @@ with fattureincloud_python_sdk.ApiClient(configuration) as api_client:
 
 print(json.dumps(products, indent=4))
 
-# here we write the products to an excel file
+# Here we write the products to an excel file
 from openpyxl import Workbook
 wb = Workbook()
 
 ws = wb.active
 
-
-# Rows can also be appended
+# Here we select only a few columns, but you can customize the file as you want
 ws.append(["id", "name", "code"])
 
 for product in products:

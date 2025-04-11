@@ -39,14 +39,13 @@ while True:
 
 print(json.dumps(products, indent=4))
 
-# here we write the products to an excel file
+# Here we write the products to an excel file
 from openpyxl import Workbook
 wb = Workbook()
 
 ws = wb.active
 
-
-# Rows can also be appended
+# Here we select only a few columns, but you can customize the file as you want
 ws.append(["id", "name", "code"])
 
 for product in products:
