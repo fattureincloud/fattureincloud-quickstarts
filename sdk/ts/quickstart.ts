@@ -7,7 +7,7 @@ export async function getFirstCompanySuppliers() {
 		let json = JSON.parse(rawdata.toString());
 		// Configure OAuth2 access token for authorization: 
 		const apiConfig = new Configuration({
-			accessToken: json["access_token"]
+			accessToken: json["accessToken"]
 		});
 
 		// Retrieve the first company id
